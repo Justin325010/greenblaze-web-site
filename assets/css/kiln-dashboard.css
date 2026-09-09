@@ -1,0 +1,678 @@
+.kiln-overlay-mount,
+.kiln-dashboard-host {
+    position: relative;
+}
+
+.kiln-dashboard-host.kiln-twin-side-panel {
+    border-color: rgba(82, 190, 236, 0.18);
+    background:
+        linear-gradient(180deg, rgba(4, 14, 25, 0.94), rgba(7, 21, 32, 0.9)),
+        radial-gradient(circle at top right, rgba(71, 203, 255, 0.16), transparent 42%),
+        radial-gradient(circle at bottom center, rgba(110, 225, 198, 0.1), transparent 46%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 18px 32px rgba(2, 8, 16, 0.42);
+}
+
+.kiln-overlay-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.kiln-overlay-node {
+    position: absolute;
+    pointer-events: none;
+}
+
+.kiln-overlay-node__anchor,
+.kiln-overlay-node__pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+}
+
+.kiln-overlay-node__anchor {
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(182, 247, 255, 0.92);
+    background: rgba(120, 218, 255, 0.18);
+    box-shadow:
+        0 0 0 6px rgba(69, 192, 255, 0.08),
+        0 0 18px rgba(78, 204, 255, 0.55);
+}
+
+.kiln-overlay-node__pulse {
+    width: 12px;
+    height: 12px;
+    background: rgba(119, 228, 255, 0.32);
+    animation: kilnOverlayPulse 2.4s ease-out infinite;
+}
+
+.kiln-overlay-node__line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(91, 214, 255, 0.82), rgba(91, 214, 255, 0.12));
+    transform-origin: left center;
+    filter: drop-shadow(0 0 8px rgba(73, 201, 255, 0.4));
+}
+
+.kiln-overlay-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 172px;
+    padding: 12px 14px 12px;
+    border: 1px solid rgba(116, 236, 255, 0.22);
+    border-radius: 16px;
+    background:
+        linear-gradient(180deg, rgba(5, 18, 31, 0.88), rgba(7, 26, 39, 0.76)),
+        radial-gradient(circle at top right, rgba(71, 203, 255, 0.22), transparent 42%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 18px 34px rgba(1, 7, 16, 0.48),
+        0 0 0 1px rgba(74, 212, 255, 0.06);
+    backdrop-filter: blur(16px);
+    color: #edf9ff;
+    pointer-events: auto;
+}
+
+.kiln-overlay-card::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: 15px;
+    border: 1px solid rgba(96, 223, 255, 0.08);
+    pointer-events: none;
+}
+
+.kiln-overlay-card[data-tone="warning"] {
+    border-color: rgba(255, 186, 78, 0.3);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 18px 34px rgba(1, 7, 16, 0.5),
+        0 0 28px rgba(255, 156, 54, 0.18);
+}
+
+.kiln-overlay-card[data-tone="low"] {
+    border-color: rgba(129, 185, 255, 0.22);
+}
+
+.kiln-overlay-card__kicker {
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(169, 231, 255, 0.58);
+}
+
+.kiln-overlay-card__label {
+    margin-top: 7px;
+    font-size: 12px;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(231, 247, 255, 0.96);
+}
+
+.kiln-overlay-card__value {
+    margin-top: 9px;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    text-shadow: 0 0 18px rgba(95, 216, 255, 0.25);
+}
+
+.kiln-overlay-card__meta,
+.kiln-overlay-card__detail {
+    margin-top: 6px;
+    font-size: 11px;
+    line-height: 1.45;
+    color: rgba(191, 220, 237, 0.78);
+}
+
+.kiln-overlay-card__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    min-height: 24px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(116, 236, 255, 0.18);
+    background: rgba(7, 41, 55, 0.56);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c8f8ff;
+}
+
+.kiln-overlay-node--green .kiln-overlay-node__anchor {
+    border-color: rgba(138, 255, 205, 0.92);
+    background: rgba(74, 255, 179, 0.16);
+    box-shadow:
+        0 0 0 6px rgba(74, 255, 179, 0.08),
+        0 0 18px rgba(74, 255, 179, 0.42);
+}
+
+.kiln-overlay-node--green .kiln-overlay-node__line {
+    background: linear-gradient(90deg, rgba(129, 255, 203, 0.82), rgba(129, 255, 203, 0.1));
+}
+
+.kiln-overlay-node--green .kiln-overlay-card {
+    border-color: rgba(123, 255, 193, 0.22);
+    background:
+        linear-gradient(180deg, rgba(6, 24, 28, 0.88), rgba(8, 32, 29, 0.74)),
+        radial-gradient(circle at top right, rgba(72, 246, 186, 0.18), transparent 42%);
+}
+
+.kiln-overlay-node--amber .kiln-overlay-node__anchor {
+    border-color: rgba(255, 216, 120, 0.9);
+    background: rgba(255, 175, 72, 0.16);
+    box-shadow:
+        0 0 0 6px rgba(255, 184, 90, 0.08),
+        0 0 18px rgba(255, 171, 85, 0.46);
+}
+
+.kiln-overlay-node--amber .kiln-overlay-node__line {
+    background: linear-gradient(90deg, rgba(255, 205, 113, 0.82), rgba(255, 205, 113, 0.12));
+}
+
+.kiln-overlay-node--amber .kiln-overlay-card {
+    border-color: rgba(255, 205, 113, 0.2);
+    background:
+        linear-gradient(180deg, rgba(28, 17, 7, 0.88), rgba(32, 22, 9, 0.74)),
+        radial-gradient(circle at top right, rgba(255, 175, 72, 0.2), transparent 42%);
+}
+
+.kiln-overlay-node--violet .kiln-overlay-node__anchor {
+    border-color: rgba(201, 170, 255, 0.92);
+    background: rgba(168, 116, 255, 0.16);
+    box-shadow:
+        0 0 0 6px rgba(166, 112, 255, 0.08),
+        0 0 18px rgba(175, 118, 255, 0.44);
+}
+
+.kiln-overlay-node--violet .kiln-overlay-node__line {
+    background: linear-gradient(90deg, rgba(199, 170, 255, 0.82), rgba(199, 170, 255, 0.1));
+}
+
+.kiln-overlay-node--violet .kiln-overlay-card {
+    border-color: rgba(203, 177, 255, 0.22);
+    background:
+        linear-gradient(180deg, rgba(16, 10, 31, 0.88), rgba(18, 12, 37, 0.74)),
+        radial-gradient(circle at top right, rgba(163, 112, 255, 0.24), transparent 42%);
+}
+
+.kiln-dashboard-host,
+.kiln-twin-dashboard-slot {
+    min-height: 0;
+}
+
+.kiln-dashboard {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 10px;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    color: #eaf7ff;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.kiln-dashboard__header {
+    display: grid;
+    gap: 10px;
+    padding: 12px 12px 10px;
+    border-radius: 18px;
+    border: 1px solid rgba(104, 208, 255, 0.14);
+    background:
+        linear-gradient(180deg, rgba(5, 17, 29, 0.92), rgba(7, 22, 35, 0.86)),
+        radial-gradient(circle at top right, rgba(73, 197, 255, 0.16), transparent 44%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 12px 24px rgba(1, 8, 16, 0.28);
+}
+
+.kiln-dashboard--detail .kiln-dashboard__header {
+    gap: 6px;
+    padding: 10px 10px 8px;
+}
+
+.kiln-dashboard--detail .kiln-dashboard__summary {
+    max-width: none;
+}
+
+.kiln-dashboard__header-copy {
+    display: grid;
+    gap: 6px;
+}
+
+.kiln-dashboard__eyebrow,
+.kiln-dashboard__card-kicker {
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(165, 225, 250, 0.58);
+}
+
+.kiln-dashboard__heading {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #f4fbff;
+}
+
+.kiln-dashboard__summary,
+.kiln-dashboard__card-note {
+    font-size: 10px;
+    line-height: 1.4;
+    color: rgba(188, 219, 235, 0.74);
+}
+
+.kiln-dashboard__header-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.kiln-dashboard__chip,
+.kiln-dashboard__card-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
+    padding: 3px 7px;
+    border-radius: 999px;
+    border: 1px solid rgba(102, 220, 255, 0.14);
+    background: rgba(7, 42, 58, 0.48);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #d9f7ff;
+    white-space: nowrap;
+}
+
+.kiln-dashboard__chip--accent {
+    border-color: rgba(255, 196, 116, 0.18);
+    background: rgba(73, 41, 16, 0.56);
+    color: #ffe4b6;
+}
+
+.kiln-dashboard__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 0;
+    align-content: start;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(106, 215, 255, 0.38) rgba(255, 255, 255, 0.04);
+}
+
+.kiln-dashboard--detail .kiln-dashboard__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    overflow-y: auto;
+}
+
+.kiln-dashboard__grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.kiln-dashboard__grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 999px;
+}
+
+.kiln-dashboard__grid::-webkit-scrollbar-thumb {
+    background: rgba(106, 215, 255, 0.28);
+    border-radius: 999px;
+}
+
+.kiln-dashboard__card {
+    position: relative;
+    display: grid;
+    gap: 7px;
+    min-width: 0;
+    min-height: 138px;
+    padding: 10px 10px 11px;
+    border: 1px solid rgba(102, 210, 255, 0.14);
+    border-radius: 16px;
+    background:
+        linear-gradient(180deg, rgba(5, 15, 26, 0.92), rgba(7, 20, 32, 0.86)),
+        radial-gradient(circle at top right, rgba(73, 197, 255, 0.12), transparent 44%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 10px 22px rgba(1, 8, 16, 0.26);
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        border-color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.kiln-dashboard__card::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.kiln-dashboard__card:hover {
+    transform: translateY(-1px);
+    border-color: rgba(120, 223, 255, 0.26);
+}
+
+.kiln-dashboard__card:focus-visible {
+    outline: 2px solid rgba(121, 228, 255, 0.52);
+    outline-offset: 2px;
+}
+
+.kiln-dashboard__card[data-selected="true"] {
+    border-color: rgba(255, 190, 102, 0.34);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 12px 24px rgba(1, 8, 16, 0.34),
+        0 0 0 1px rgba(255, 190, 102, 0.1);
+}
+
+.kiln-dashboard__card--hero {
+    min-height: 156px;
+    padding: 12px 12px 13px;
+    border-radius: 18px;
+}
+
+.kiln-dashboard--detail .kiln-dashboard__card--hero {
+    min-height: 176px;
+}
+
+.kiln-dashboard__card--hero .kiln-dashboard__card-title {
+    font-size: 15px;
+}
+
+.kiln-dashboard__card--hero .kiln-dashboard__primary-value {
+    font-size: 31px;
+    text-shadow: 0 0 26px rgba(113, 224, 255, 0.28);
+}
+
+.kiln-dashboard__card--hero .kiln-dashboard__card-note {
+    color: rgba(225, 242, 250, 0.82);
+}
+
+.kiln-dashboard__card--temperature {
+    border-color: rgba(95, 223, 255, 0.3);
+    background:
+        radial-gradient(circle at top right, rgba(93, 221, 255, 0.22), transparent 42%),
+        linear-gradient(180deg, rgba(10, 31, 49, 0.98), rgba(8, 24, 40, 0.92));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 16px 30px rgba(2, 11, 20, 0.34),
+        0 0 22px rgba(81, 215, 255, 0.12);
+}
+
+.kiln-dashboard__card--efficiency {
+    border-color: rgba(133, 234, 205, 0.24);
+    background:
+        radial-gradient(circle at top right, rgba(255, 203, 116, 0.18), transparent 38%),
+        linear-gradient(180deg, rgba(8, 29, 37, 0.98), rgba(6, 26, 31, 0.92));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 16px 30px rgba(2, 11, 20, 0.34),
+        0 0 20px rgba(118, 227, 201, 0.1);
+}
+
+.kiln-dashboard__card-head,
+.kiln-dashboard__metric {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 0;
+}
+
+.kiln-dashboard__card-title {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.2;
+    color: #f5fbff;
+}
+
+.kiln-dashboard__primary {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    min-width: 0;
+}
+
+.kiln-dashboard__primary-value {
+    min-width: 0;
+    font-size: 24px;
+    line-height: 0.95;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: #ffffff;
+    text-shadow: 0 0 18px rgba(87, 213, 255, 0.2);
+}
+
+.kiln-dashboard__primary-unit {
+    margin-bottom: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(167, 227, 255, 0.68);
+}
+
+.kiln-dashboard__card-visual {
+    min-height: 24px;
+}
+
+.kiln-dashboard__sparkline {
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(122, 211, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+}
+
+.kiln-dashboard--detail .kiln-dashboard__sparkline {
+    height: 38px;
+}
+
+.kiln-dashboard__sparkline-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.kiln-dashboard__sparkline-area {
+    fill: rgba(80, 205, 255, 0.14);
+}
+
+.kiln-dashboard__sparkline-line {
+    fill: none;
+    stroke: #6bd8ff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.kiln-dashboard__sparkline-marker {
+    fill: #ffd58c;
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 1;
+}
+
+.kiln-dashboard__meter,
+.kiln-dashboard__split-meter {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.kiln-dashboard__meter-fill,
+.kiln-dashboard__split-meter-part {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    transition: width 220ms ease;
+}
+
+.kiln-dashboard__meter-fill {
+    width: 0;
+    background: linear-gradient(90deg, #55d8ff, #ffc36f);
+    box-shadow: 0 0 16px rgba(85, 216, 255, 0.34);
+}
+
+.kiln-dashboard__split-meter {
+    display: flex;
+    gap: 2px;
+}
+
+.kiln-dashboard__split-meter-part--blue {
+    width: 50%;
+    background: linear-gradient(90deg, rgba(76, 186, 255, 0.96), rgba(89, 220, 255, 0.82));
+}
+
+.kiln-dashboard__split-meter-part--orange {
+    width: 50%;
+    background: linear-gradient(90deg, rgba(255, 170, 95, 0.86), rgba(255, 214, 122, 0.96));
+}
+
+.kiln-dashboard__metrics {
+    display: grid;
+    gap: 5px;
+}
+
+.kiln-dashboard--detail .kiln-dashboard__metric {
+    font-size: 11px;
+}
+
+.kiln-dashboard__metric {
+    padding-top: 5px;
+    border-top: 1px solid rgba(130, 193, 221, 0.12);
+    font-size: 10px;
+}
+
+.kiln-dashboard__metric-label {
+    color: rgba(179, 214, 232, 0.7);
+}
+
+.kiln-dashboard__metric-value {
+    min-width: 0;
+    font-weight: 700;
+    color: #f4fbff;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.kiln-dashboard[data-layout="stack"] .kiln-dashboard__grid {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.kiln-dashboard[data-density="compact"] {
+    gap: 8px;
+}
+
+.kiln-dashboard[data-density="compact"] .kiln-dashboard__header {
+    padding: 10px;
+}
+
+.kiln-dashboard[data-density="compact"] .kiln-dashboard__card {
+    min-height: 146px;
+    padding: 10px;
+    border-radius: 14px;
+}
+
+.kiln-dashboard[data-density="compact"] .kiln-dashboard__card--hero {
+    min-height: 150px;
+}
+
+.kiln-dashboard[data-density="compact"] .kiln-dashboard__heading {
+    font-size: 16px;
+}
+
+.kiln-dashboard[data-density="compact"] .kiln-dashboard__primary-value {
+    font-size: 24px;
+}
+
+.kiln-dashboard[data-density="compact"] .kiln-dashboard__sparkline {
+    height: 46px;
+}
+
+@keyframes kilnOverlayPulse {
+    0% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    70% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(3.4);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(3.4);
+    }
+}
+
+@media (max-width: 1024px) {
+    .kiln-overlay-card {
+        width: 156px;
+        padding: 11px 12px;
+    }
+
+    .kiln-overlay-card__value {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .kiln-overlay-node {
+        transform: scale(0.9);
+        transform-origin: center;
+    }
+
+    .kiln-dashboard__header {
+        padding: 10px;
+    }
+
+    .kiln-dashboard__primary-value {
+        font-size: 24px;
+    }
+
+    .kiln-dashboard__grid {
+        gap: 8px;
+    }
+
+    .kiln-dashboard__card--hero {
+        min-height: 146px;
+    }
+}
+
+@media (max-width: 640px) {
+    .kiln-overlay-root {
+        display: none;
+    }
+}

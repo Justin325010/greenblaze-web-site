@@ -1,0 +1,867 @@
+.kiln-twin-shell {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 10px;
+    min-height: inherit;
+    height: 100%;
+    padding: 12px;
+    color: #e6f7ff;
+    border-radius: 28px;
+    border: 1px solid rgba(88, 158, 205, 0.18);
+    background:
+        radial-gradient(circle at top left, rgba(72, 205, 255, 0.14), transparent 24%),
+        radial-gradient(circle at 86% 8%, rgba(255, 144, 66, 0.12), transparent 18%),
+        linear-gradient(180deg, rgba(5, 12, 20, 0.92), rgba(6, 16, 26, 0.95));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 24px 56px rgba(1, 6, 14, 0.42);
+    overflow: hidden;
+}
+
+.kiln-twin-shell::before,
+.kiln-twin-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.kiln-twin-shell::before {
+    background-image:
+        linear-gradient(rgba(164, 203, 230, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(164, 203, 230, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.35;
+    mask-image: radial-gradient(circle at center, black 42%, transparent 92%);
+}
+
+.kiln-twin-shell::after {
+    background:
+        linear-gradient(90deg, transparent, rgba(120, 219, 255, 0.06), transparent),
+        linear-gradient(180deg, transparent, rgba(120, 219, 255, 0.03), transparent);
+    mix-blend-mode: screen;
+}
+
+.kiln-twin-topbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+    padding: 10px 14px;
+    border-radius: 22px;
+    border: 1px solid rgba(96, 184, 230, 0.16);
+    background:
+        linear-gradient(180deg, rgba(8, 18, 30, 0.92), rgba(8, 21, 36, 0.82)),
+        radial-gradient(circle at top right, rgba(74, 208, 255, 0.12), transparent 42%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.kiln-twin-topbar__brand {
+    display: grid;
+    gap: 6px;
+    max-width: none;
+}
+
+.kiln-twin-topbar__eyebrow,
+.kiln-twin-center__eyebrow,
+.kiln-twin-side-panel__eyebrow,
+.kiln-twin-section-title,
+.kiln-twin-panel-slot__label,
+.kiln-twin-select-wrap__label,
+.kiln-twin-metric__label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(166, 219, 245, 0.58);
+}
+
+.kiln-twin-topbar__title,
+.kiln-twin-center__title,
+.kiln-twin-side-panel__title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #f3fbff;
+}
+
+.kiln-twin-topbar__subtitle,
+.kiln-twin-center__subtitle,
+.kiln-twin-side-panel__subtitle,
+.kiln-twin-panel-slot__hint,
+.kiln-twin-note,
+.kiln-twin-toolbar__footer {
+    margin: 0;
+    font-size: 10px;
+    line-height: 1.45;
+    color: rgba(189, 220, 238, 0.72);
+}
+
+.kiln-twin-topbar__metrics {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.kiln-twin-metric {
+    display: grid;
+    gap: 6px;
+    min-height: 74px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(99, 185, 228, 0.14);
+    background: rgba(7, 19, 31, 0.78);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.kiln-twin-metric[data-accent="cyan"] {
+    border-color: rgba(89, 212, 255, 0.24);
+}
+
+.kiln-twin-metric[data-accent="amber"] {
+    border-color: rgba(255, 177, 91, 0.22);
+}
+
+.kiln-twin-metric[data-accent="green"] {
+    border-color: rgba(114, 240, 181, 0.22);
+}
+
+.kiln-twin-metric[data-accent="active"] {
+    border-color: rgba(87, 216, 255, 0.22);
+}
+
+.kiln-twin-metric[data-accent="warning"] {
+    border-color: rgba(255, 176, 95, 0.22);
+}
+
+.kiln-twin-metric__value {
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: #f6fcff;
+}
+
+.kiln-twin-main {
+    display: grid;
+    grid-template-columns:
+        246px
+        minmax(0, 1fr)
+        286px;
+    gap: 12px;
+    min-height: 0;
+    position: relative;
+    align-items: stretch;
+    isolation: isolate;
+}
+
+.kiln-twin-toolbar,
+.kiln-twin-center__frame,
+.kiln-twin-side-panel {
+    min-height: 0;
+}
+
+.kiln-twin-toolbar,
+.kiln-twin-center,
+.kiln-twin-side-panel {
+    grid-row: 1;
+}
+
+.kiln-twin-toolbar {
+    grid-column: 1;
+    position: relative;
+    z-index: 4;
+    align-self: stretch;
+    justify-self: start;
+}
+
+.kiln-twin-toolbar__rail {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    min-height: 0;
+    height: 100%;
+    width: 100%;
+    padding: 14px;
+    border-radius: 22px;
+    border: 1px solid rgba(86, 167, 213, 0.16);
+    background:
+        linear-gradient(180deg, rgba(8, 18, 29, 0.94), rgba(7, 15, 24, 0.84)),
+        radial-gradient(circle at top, rgba(72, 205, 255, 0.12), transparent 34%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+
+.kiln-twin-toolbar__heading {
+    display: grid;
+    gap: 8px;
+}
+
+.kiln-twin-toolbar__stack {
+    display: grid;
+    gap: 12px;
+    min-height: 0;
+    overflow: auto;
+    padding-right: 2px;
+}
+
+.kiln-twin-toolbar__note {
+    margin: 0;
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+.kiln-twin-toolbar__button,
+.kiln-twin-toolbar__mode,
+.kiln-twin-button,
+.kiln-twin-select {
+    font: inherit;
+}
+
+.kiln-twin-toolbar__button,
+.kiln-twin-toolbar__mode {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(95, 181, 227, 0.16);
+    background: rgba(7, 20, 33, 0.86);
+    color: #effbff;
+    transition:
+        transform 150ms ease,
+        border-color 150ms ease,
+        box-shadow 150ms ease,
+        background 150ms ease;
+}
+
+.kiln-twin-toolbar__button {
+    display: grid;
+    gap: 4px;
+    padding: 10px 9px;
+}
+
+.kiln-twin-toolbar__button[data-tone="primary"] {
+    background: linear-gradient(180deg, rgba(18, 88, 125, 0.96), rgba(10, 53, 82, 0.96));
+    border-color: rgba(100, 217, 255, 0.24);
+}
+
+.kiln-twin-toolbar__button:hover:not(:disabled),
+.kiln-twin-toolbar__mode:hover:not(:disabled),
+.kiln-twin-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 22px rgba(2, 10, 18, 0.32);
+}
+
+.kiln-twin-toolbar__button:disabled,
+.kiln-twin-button:disabled,
+.kiln-twin-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.kiln-twin-toolbar__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.kiln-twin-toolbar__hint {
+    font-size: 9px;
+    line-height: 1.4;
+    color: rgba(189, 220, 238, 0.72);
+}
+
+.kiln-twin-toolbar__modes {
+    display: none;
+}
+
+.kiln-twin-toolbar__mode {
+    min-height: 40px;
+    padding: 0 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.kiln-twin-toolbar__mode[data-active="true"] {
+    border-color: rgba(94, 219, 255, 0.3);
+    background: linear-gradient(180deg, rgba(19, 80, 107, 0.95), rgba(9, 41, 63, 0.95));
+    color: #ffffff;
+}
+
+.kiln-twin-toolbar__footer {
+    padding: 2px 4px 0;
+}
+
+.kiln-twin-center {
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    gap: 0;
+    min-width: 0;
+    min-height: 0;
+    z-index: 2;
+    position: relative;
+}
+
+.kiln-twin-center__frame {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 8px;
+    min-height: 0;
+    height: 100%;
+    padding: 12px;
+    border-radius: 24px;
+    border: 1px solid rgba(96, 184, 230, 0.16);
+    background:
+        radial-gradient(circle at top, rgba(73, 199, 255, 0.12), transparent 36%),
+        linear-gradient(180deg, rgba(5, 15, 26, 0.94), rgba(8, 20, 34, 0.92));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+
+.kiln-twin-viewport {
+    position: relative;
+    min-height: 700px;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(97, 185, 230, 0.16);
+    background:
+        radial-gradient(circle at 50% 18%, rgba(74, 209, 255, 0.18), transparent 30%),
+        linear-gradient(180deg, rgba(2, 9, 16, 0.98), rgba(6, 18, 30, 0.96));
+}
+
+.kiln-twin-viewport::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(rgba(131, 200, 232, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(131, 200, 232, 0.06) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity: 0.4;
+}
+
+.kiln-twin-viewport::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 14%, rgba(112, 219, 255, 0.22), transparent 24%),
+        linear-gradient(180deg, rgba(125, 214, 255, 0.05), transparent 18%, transparent 78%, rgba(255, 178, 103, 0.08));
+    mix-blend-mode: screen;
+}
+
+.kiln-twin-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.kiln-twin-layer-legacy {
+    z-index: 1;
+    display: none;
+}
+
+.kiln-twin-layer-scene,
+.kiln-twin-layer-css2d,
+.kiln-twin-layer-ui {
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 180ms ease;
+}
+
+.kiln-twin-layer canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.kiln-twin-layer-css2d {
+    z-index: 3;
+    pointer-events: none;
+}
+
+.kiln-twin-layer-ui {
+    z-index: 4;
+    pointer-events: none;
+}
+
+.kiln-twin-viewport-actions {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 6;
+    display: flex;
+    gap: 8px;
+    pointer-events: auto;
+}
+
+.kiln-twin-viewport-actions .kiln-twin-toolbar__button {
+    width: auto;
+    min-width: 92px;
+    padding: 8px 12px;
+    border-radius: 14px;
+    background: rgba(8, 22, 36, 0.64);
+    border-color: rgba(111, 205, 243, 0.14);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 22px rgba(2, 10, 18, 0.18);
+}
+
+.kiln-twin-viewport-actions .kiln-twin-toolbar__button[data-tone="primary"] {
+    background: linear-gradient(180deg, rgba(17, 74, 104, 0.72), rgba(10, 46, 70, 0.72));
+    border-color: rgba(105, 211, 247, 0.18);
+}
+
+.kiln-twin-viewport-actions .kiln-twin-toolbar__label {
+    font-size: 10px;
+    letter-spacing: 0.04em;
+}
+
+.kiln-twin-viewport-actions .kiln-twin-toolbar__hint {
+    font-size: 8px;
+    color: rgba(205, 230, 242, 0.62);
+}
+
+.kiln-twin-center__caption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-left: 2px;
+}
+
+.kiln-twin-center__caption-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(95, 180, 227, 0.16);
+    background: rgba(7, 18, 30, 0.8);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(198, 231, 247, 0.82);
+}
+
+.kiln-twin-center__caption-chip--active {
+    border-color: rgba(109, 223, 255, 0.22);
+    background: rgba(10, 43, 64, 0.78);
+    color: #effcff;
+}
+
+.kiln-twin-side-panel {
+    grid-column: 3;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 8px;
+    min-height: 0;
+    width: 100%;
+    padding: 12px 12px 10px;
+    border-radius: 24px;
+    border: 1px solid rgba(96, 184, 230, 0.16);
+    background:
+        linear-gradient(180deg, rgba(7, 18, 29, 0.97), rgba(8, 21, 34, 0.93)),
+        radial-gradient(circle at top right, rgba(74, 208, 255, 0.14), transparent 44%),
+        radial-gradient(circle at bottom center, rgba(117, 224, 197, 0.08), transparent 48%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    justify-self: end;
+    align-self: stretch;
+    z-index: 4;
+    overflow: hidden;
+}
+
+.kiln-twin-side-panel__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.kiln-twin-side-panel__heading {
+    display: grid;
+    gap: 6px;
+}
+
+.kiln-twin-status-pill {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 26px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(95, 181, 227, 0.16);
+    background: rgba(7, 20, 32, 0.88);
+    color: #dff7ff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.kiln-twin-status-pill[data-tone="active"] {
+    border-color: rgba(95, 220, 255, 0.24);
+    color: #f5fdff;
+}
+
+.kiln-twin-status-pill[data-tone="warning"] {
+    border-color: rgba(255, 177, 91, 0.24);
+    color: #ffe1b8;
+}
+
+.kiln-twin-side-panel__scroll {
+    min-height: 0;
+    overflow: auto;
+    padding-right: 2px;
+    overscroll-behavior: contain;
+}
+
+.kiln-twin-panel-stack {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    align-content: start;
+}
+
+.kiln-twin-panel-slot {
+    min-height: 124px;
+    padding: 12px;
+    border-radius: 18px;
+    border: 1px dashed rgba(95, 181, 227, 0.2);
+    background:
+        linear-gradient(180deg, rgba(7, 19, 31, 0.78), rgba(8, 21, 33, 0.72)),
+        radial-gradient(circle at top right, rgba(84, 206, 255, 0.08), transparent 44%);
+}
+
+.kiln-twin-panel-slot[data-kiln-twin-slot="metrics"] {
+    display: grid;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.kiln-twin-panel-slot[data-kiln-twin-slot="overview"] {
+    min-height: 0;
+}
+
+.kiln-twin-panel-slot[data-kiln-twin-slot="inspector"] {
+    min-height: 0;
+}
+
+.kiln-twin-panel-slot[data-kiln-twin-slot-state="filled"] {
+    border-style: solid;
+}
+
+.kiln-twin-summary,
+.kiln-twin-controls {
+    display: grid;
+    gap: 8px;
+}
+
+.kiln-twin-info-row,
+.kiln-twin-note,
+.kiln-twin-select,
+.kiln-twin-button {
+    border-radius: 14px;
+    border: 1px solid rgba(96, 184, 230, 0.14);
+    background: rgba(7, 20, 32, 0.78);
+    color: #edf9ff;
+}
+
+.kiln-twin-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 34px;
+    padding: 8px 10px;
+}
+
+.kiln-twin-info-row__label {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: rgba(166, 219, 245, 0.56);
+}
+
+.kiln-twin-info-row__value {
+    font-size: 11px;
+    color: #f1fbff;
+}
+
+.kiln-twin-note {
+    padding: 8px 10px;
+}
+
+.kiln-twin-dashboard-slot {
+    min-width: 0;
+    min-height: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.kiln-twin-side-metrics {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+}
+
+.kiln-twin-side-metric {
+    display: grid;
+    gap: 6px;
+    min-height: 114px;
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(96, 184, 230, 0.14);
+    background:
+        linear-gradient(180deg, rgba(8, 22, 35, 0.86), rgba(7, 18, 30, 0.78)),
+        radial-gradient(circle at top right, rgba(93, 208, 255, 0.08), transparent 44%);
+}
+
+.kiln-twin-side-metric__label {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: rgba(165, 218, 244, 0.62);
+}
+
+.kiln-twin-side-metric__value {
+    font-size: 19px;
+    line-height: 1;
+    font-weight: 800;
+    color: #f5fcff;
+}
+
+.kiln-twin-side-metric__note {
+    font-size: 10px;
+    line-height: 1.4;
+    color: rgba(188, 219, 235, 0.68);
+}
+
+.kiln-twin-select-wrap {
+    display: grid;
+    gap: 8px;
+}
+
+.kiln-twin-select,
+.kiln-twin-button {
+    min-height: 34px;
+    padding: 0 10px;
+}
+
+.kiln-twin-button-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.kiln-twin-button {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.kiln-twin-button--accent {
+    background: linear-gradient(180deg, rgba(18, 88, 125, 0.96), rgba(10, 53, 82, 0.96));
+    border-color: rgba(100, 217, 255, 0.24);
+}
+
+.kiln-twin-button--ghost {
+    background: rgba(8, 25, 40, 0.86);
+}
+
+.kiln-twin-css2d-badge {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 26px;
+    padding: 0 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(133, 227, 255, 0.24);
+    background: rgba(5, 18, 31, 0.82);
+    color: #dff7ff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 24px rgba(2, 14, 22, 0.28);
+}
+
+.kiln-twin-panel-slot[data-kiln-twin-slot="metrics"] .kiln-dashboard {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    min-width: 0;
+}
+
+.kiln-twin-panel-slot[data-kiln-twin-slot="metrics"] .kiln-dashboard__hero,
+.kiln-twin-panel-slot[data-kiln-twin-slot="metrics"] .kiln-dashboard__modules,
+.kiln-twin-panel-slot[data-kiln-twin-slot="metrics"] .kiln-dashboard__formula {
+    grid-column: 1 / -1;
+}
+
+.kiln-twin-panel-slot[data-kiln-twin-slot="metrics"] .kiln-dashboard__modules {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+}
+
+.kiln-twin-shell[data-kiln-twin-mode="legacy"] .kiln-twin-layer-scene,
+.kiln-twin-shell[data-kiln-twin-mode="legacy"] .kiln-twin-layer-css2d,
+.kiln-twin-shell[data-kiln-twin-mode="legacy"] .kiln-twin-layer-ui {
+    opacity: 0;
+}
+
+.kiln-twin-shell[data-kiln-twin-mode="twin"] .kiln-twin-layer-legacy {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.kiln-twin-shell[data-kiln-twin-mode="split"] .kiln-twin-layer-legacy {
+    opacity: 0.22;
+}
+
+.kiln-twin-shell[data-kiln-twin-mode="twin"] .kiln-twin-layer-scene,
+.kiln-twin-shell[data-kiln-twin-mode="split"] .kiln-twin-layer-scene,
+.kiln-twin-shell[data-kiln-twin-mode="twin"] .kiln-twin-layer-ui,
+.kiln-twin-shell[data-kiln-twin-mode="split"] .kiln-twin-layer-ui,
+.kiln-twin-shell[data-kiln-twin-mode="twin"] .kiln-twin-layer-css2d,
+.kiln-twin-shell[data-kiln-twin-mode="split"] .kiln-twin-layer-css2d {
+    pointer-events: auto;
+}
+
+.kiln-twin-shell[data-kiln-twin-mode="twin"] .kiln-twin-layer-ui,
+.kiln-twin-shell[data-kiln-twin-mode="split"] .kiln-twin-layer-ui,
+.kiln-twin-shell[data-kiln-twin-mode="twin"] .kiln-twin-layer-css2d,
+.kiln-twin-shell[data-kiln-twin-mode="split"] .kiln-twin-layer-css2d {
+    pointer-events: none;
+}
+
+@media (max-width: 1180px) {
+    .kiln-twin-topbar__metrics {
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+    }
+
+    .kiln-twin-main {
+        grid-template-columns:
+            220px
+            minmax(0, 1fr)
+            270px;
+    }
+
+    .kiln-twin-viewport {
+        min-height: 640px;
+    }
+}
+
+@media (max-width: 1040px) {
+    .kiln-twin-main {
+        grid-template-columns:
+            200px
+            minmax(0, 1fr)
+            238px;
+    }
+}
+
+@media (max-width: 960px) {
+    .kiln-twin-shell {
+        padding: 14px;
+    }
+
+    .kiln-twin-topbar,
+    .kiln-twin-main {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .kiln-twin-toolbar,
+    .kiln-twin-center,
+    .kiln-twin-side-panel {
+        grid-column: auto;
+        grid-row: auto;
+        width: auto;
+        justify-self: stretch;
+    }
+
+    .kiln-twin-center {
+        order: 1;
+        padding: 0;
+    }
+
+    .kiln-twin-side-panel {
+        order: 2;
+    }
+
+    .kiln-twin-toolbar {
+        order: 3;
+    }
+
+    .kiln-twin-toolbar__rail {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: stretch;
+        width: auto;
+        min-height: auto;
+        height: auto;
+        overflow: visible;
+    }
+
+    .kiln-twin-toolbar__stack {
+        overflow: visible;
+        padding-right: 0;
+    }
+
+    .kiln-twin-toolbar__modes {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .kiln-twin-toolbar__footer {
+        grid-column: 1 / -1;
+    }
+
+    .kiln-twin-viewport {
+        min-height: 560px;
+    }
+}
+
+@media (max-width: 720px) {
+    .kiln-twin-topbar__metrics,
+    .kiln-twin-panel-stack,
+    .kiln-twin-side-metrics,
+    .kiln-twin-panel-slot[data-kiln-twin-slot="metrics"] .kiln-dashboard,
+    .kiln-twin-panel-slot[data-kiln-twin-slot="metrics"] .kiln-dashboard__modules,
+    .kiln-twin-toolbar__rail,
+    .kiln-twin-toolbar__modes {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .kiln-twin-side-panel__header {
+        flex-direction: column;
+    }
+
+    .kiln-twin-viewport {
+        min-height: 360px;
+    }
+
+    .kiln-twin-viewport-actions {
+        left: 12px;
+        right: 12px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .kiln-twin-css2d-badge {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        justify-content: center;
+    }
+
+    .kiln-twin-button-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
